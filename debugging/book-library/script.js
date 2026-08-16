@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary = [];
 
 const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
@@ -28,28 +28,22 @@ function populateStorage() {
 //check the right input from forms and if its ok -> add the new book (object in array)
 //via Book function and start render function
 function submit() {
-  if (
-    titleInput.value.trim() === "" ||
-    authorInput.value.trim() === "" ||
-    pagesInput.value === ""
-  ) {
+  const titleValue = titleInput.value.trim();
+  const authorValue = authorInput.value.trim();
+  const pagesValue = pagesInput.value;
+  if (titleValue === "" || authorValue === "" || pagesValue === "") {
     alert("Please fill all fields!");
     return false;
   }
 
-  const pages = Number(pagesInput.value);
+  const pages = Number(pagesValue);
 
   if (pages <= 0 || !Number.isInteger(pages)) {
     alert("Please enter a valid page number.");
     return false;
   }
 
-  const book = new Book(
-    titleInput.value.trim(),
-    authorInput.value.trim(),
-    pages,
-    checkInput.checked
-  );
+  const book = new Book(titleValue, authorValue, pages, checkInput.checked);
 
   myLibrary.push(book);
   render();
@@ -83,6 +77,9 @@ function render() {
     titleCell.textContent = myLibrary[i].title;
     authorCell.textContent = myLibrary[i].author;
     pagesCell.textContent = myLibrary[i].pages;
+    const submitButton = document.getElementById("submit");
+
+    submitButton.addEventListener("click", submit);
 
     //add and wait for action for read/unread button
     const changeButton = document.createElement("button");
