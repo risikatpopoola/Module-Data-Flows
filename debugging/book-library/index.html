@@ -51,21 +51,21 @@
           class="form-control"
           id="pages"
           name="pages"
+          min="1"
+          step="1"
           required
         >
-        <label class="form-check-label">
-          <input
-            type="checkbox"
-            class="form-check-input"
-            id="check"
-            value=""
-          >Read
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="check">
+        <label class="form-check-label" for="check">
+        Read
         </label>
+        </div>
         <input
           type="submit"
           value="Submit"
           class="btn btn-primary"
-          onclick="submit();"
+          id ="submit"
         >
       </div>
     </div>
