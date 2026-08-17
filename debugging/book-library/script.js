@@ -8,6 +8,8 @@ const checkInput = document.getElementById("check");
 function setup() {
   populateStorage();
   render();
+  const bookForm = document.getElementById("book-form");
+  bookForm.addEventListener("submit", addBook);
 }
 
 function populateStorage() {
@@ -27,7 +29,8 @@ function populateStorage() {
 
 //check the right input from forms and if its ok -> add the new book (object in array)
 //via Book function and start render function
-function submit() {
+function addBook(event) {
+  event.preventDefault();
   const titleValue = titleInput.value.trim();
   const authorValue = authorInput.value.trim();
   const pagesValue = pagesInput.value;
@@ -77,9 +80,6 @@ function render() {
     titleCell.textContent = myLibrary[i].title;
     authorCell.textContent = myLibrary[i].author;
     pagesCell.textContent = myLibrary[i].pages;
-    const submitButton = document.getElementById("submit");
-
-    submitButton.addEventListener("click", submit);
 
     //add and wait for action for read/unread button
     const changeButton = document.createElement("button");
