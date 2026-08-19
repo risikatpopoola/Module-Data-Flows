@@ -4,12 +4,12 @@ const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
 const pagesInput = document.getElementById("pages");
 const checkInput = document.getElementById("check");
+const bookForm = document.getElementById("book-form");
 
 function setup() {
   populateStorage();
   render();
-  const bookForm = document.getElementById("book-form");
-  bookForm.addEventListener("submit", addBook);
+
 }
 
 function populateStorage() {
@@ -115,5 +115,5 @@ function render() {
     });
   }
 }
-
+bookForm.addEventListener("submit", addBook);
 window.addEventListener("load", setup);
